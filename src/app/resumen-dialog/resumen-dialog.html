@@ -1,0 +1,23 @@
+<h2 mat-dialog-title>Datos registrados</h2>
+
+<div mat-dialog-content>
+  <p><b>Nombre:</b> {{ data.nombre }}</p>
+  <p><b>Teléfono:</b> {{ data.telefono }}</p>
+  <p><b>Dirección:</b> {{ data.dirreccion }}</p>
+  <p><b>Email:</b> {{ data.email }}</p>
+
+  <p><b>Sexo:</b>
+    {{ data.genero === 'H' ? 'Hombre' : 'Mujer' }}
+  </p>
+
+  <p><b>Clase:</b>
+    {{ data.actividad === 'P' ? 'Pilates'
+      : data.actividad === 'Z' ? 'Zumba'
+      : 'Taichi' }}
+  </p>
+</div>
+
+<div mat-dialog-actions align="end">
+  <button mat-stroked-button type="button" (click)="cerrar()">Cerrar</button>
+</div>
+

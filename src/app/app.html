@@ -1,0 +1,115 @@
+<div class="container">
+   <h1>GYM TONY</h1>
+</div>
+ 
+
+
+<form [formGroup]="gymTony" class="formulario">
+
+  <mat-stepper #stepper>
+    <mat-step [stepControl]="datosPersonales">
+      <div formGroupName="datosPersonales">
+        <h2>Datos Personales</h2>
+        <mat-form-field appearance="outline">
+          <mat-label>Nombre</mat-label>
+          <input matInput type="text" formControlName="nombre">
+          @if (datosPersonales.get('nombre')?.errors?.['minlength']) {
+            <p class="obligatorio">El nombre debe tener mínimo 2 caracteres</p>
+          }
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="outline">
+          <mat-label>Teléfono</mat-label>
+          <input matInput type="text" formControlName="telefono">
+          @if (datosPersonales.get('telefono')?.errors?.['validarTelefono']) {
+            <p class="obligatorio">
+              El teléfono debe tener 9 caracteres y empezar por 6, 7 o 9
+            </p>
+          }
+        </mat-form-field>
+          <br>
+        <mat-form-field appearance="outline">
+          <mat-label>Dirección</mat-label>
+          <input matInput type="text" formControlName="dirreccion">
+          @if (datosPersonales.get('dirreccion')?.errors?.['validarDirrecion']) {
+            <p class="obligatorio">
+              Debe empezar por calle, vía, avenida, paseo o plaza
+            </p>
+          }
+        </mat-form-field>
+          <br>
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput type="text" formControlName="email">
+          @if (datosPersonales.get('email')?.errors?.['validarEmail']) {
+            <p class="obligatorio">Email incorrecto</p>
+          }
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="outline">
+          <mat-label>Contraseña</mat-label>
+          <input matInput type="password" formControlName="password">
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="outline">
+          <mat-label>Repetir contraseña</mat-label>
+          <input matInput type="password" formControlName="repetPassword">
+          @if (datosPersonales.errors?.['validarPassword']) {
+            <p class="obligatorio">Las contraseñas no coinciden</p>
+          }
+        </mat-form-field>
+        <br>
+        <button
+          mat-stroked-button
+          type="button"
+          (click)="nextFromStep1(stepper)">
+          Siguiente
+        </button>
+
+      </div>
+      
+    </mat-step>
+
+
+    <mat-step [stepControl]="datosExtra">
+      <div formGroupName="datosExtra">
+
+        <h2>Otros datos</h2>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Sexo</mat-label>
+          <mat-select formControlName="genero" required>
+            <mat-option value="H">Hombre</mat-option>
+            <mat-option value="M">Mujer</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="outline">
+          <mat-label>Clases</mat-label>
+          <mat-select formControlName="actividad" required>
+            <mat-option value="P">Pilates</mat-option>
+            <mat-option value="Z">Zumba</mat-option>
+            <mat-option value="T">Taichi</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <br>
+        <button
+          mat-stroked-button
+          type="button"
+          matStepperPrevious>
+          Anterior
+        </button>
+
+        <button
+          mat-stroked-button
+          type="button"
+          (click)="inscribirse()">
+          Inscribirse
+        </button>
+
+      </div>
+    </mat-step>
+
+  </mat-stepper>
+
+</form>

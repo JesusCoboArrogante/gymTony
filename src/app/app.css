@@ -1,0 +1,31 @@
+body { margin: 0; }
+
+.container{
+  background: blue;
+  width: 100%;
+  padding: 20px;
+}
+
+.container h1{
+  color: white;
+  margin: 0;
+  text-align: center;
+}
+
+h2{
+  text-align: center;
+  margin: 30px 0;
+}
+
+.formulario{
+  max-width: 420px;
+  margin: 0 auto;
+  padding: 0 16px;
+  font-size: 20px;
+}
+
+mat-form-field{
+  display: block;
+  margin-bottom: 10px;
+}
+
